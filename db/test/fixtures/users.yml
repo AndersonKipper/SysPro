@@ -2,14 +2,12 @@
 
 one:
   nome: MyString
-  description: MyText
+  email: MyString
+  password: MyString
   date: 2015-06-02
-  userId: 1
-  stats: MyString
 
 two:
   nome: MyString
-  description: MyText
+  email: MyString
+  password: MyString
   date: 2015-06-02
-  userId: 1
-  stats: MyString

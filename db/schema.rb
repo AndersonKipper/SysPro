@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150603015333) do
     t.date     "dateStart"
     t.date     "dateEnd"
     t.string   "stats"
-    t.integer  "projectId"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -6,7 +6,7 @@ class CreateTasks < ActiveRecord::Migration
       t.date :dateStart
       t.date :dateEnd
       t.string :stats
-      t.integer :projectId
+      t.integer :project_id
 
       t.timestamps
     end

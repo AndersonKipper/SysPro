@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150617221752) do
     t.string   "nome"
     t.text     "description"
     t.date     "date"
-    t.integer  "userId"
+    t.integer  "user_id"
     t.string   "stats"
     t.datetime "created_at"
     t.datetime "updated_at"

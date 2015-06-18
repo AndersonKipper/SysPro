@@ -11,12 +11,14 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @task = Task.new
-    
+    @forum = Forum.new
+    @forum.project_id = @project.id
   end
 
   # GET /projects/new
   def new
     @project = Project.new
+
   end
 
   # GET /projects/1/edit
@@ -71,6 +73,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:nome, :description, :date, :userId, :stats)
+      params.require(:project).permit(:nome, :description, :date, :user_id, :stats)
     end
 end

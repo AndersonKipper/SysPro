@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :forums
+
 #  resources :tasks
 
   resources :projects do

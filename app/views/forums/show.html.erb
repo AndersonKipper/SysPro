@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @forum.project_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @forum.user_id %>
+</p>
+
+<p>
+  <strong>Name user:</strong>
+  <%= @forum.name_user %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @forum.message %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @forum.data %>
+</p>
+
+<%= link_to 'Edit', edit_forum_path(@forum) %> |
+<%= link_to 'Back', forums_path %>

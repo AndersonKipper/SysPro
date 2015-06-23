@@ -105,6 +105,7 @@
     <tbody>
     <tr>
     <td><%= f.label 'Projeto' %></td>
+   <td><%= f.label 'Usuario Id' %></td>
    <td> <%= f.label 'Usuario' %></td>
    <td> <%= f.label 'Mensagem' %></td>
    <td> <%= f.label 'Data' %></td>
@@ -113,8 +114,9 @@
   <tr>
 
    <td> <%= f.number_field :project_id %> </td>
+   <td> <%= f.number_field :user_id %> </td>
    <td> <%= f.text_field :name_user %></td>
-   <td> <%= f.text_field :message %> </td>   
+   <td> <%= f.text_area :message %> </td>   
    <td> <%= f.date_select :data %></td>
   </tr>
   </tbody>

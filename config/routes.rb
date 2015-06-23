@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  post 'logins/create'
+
+  get "login" => "logins#new", :as => "login"
+  get "logout" => "logins#destroy", :as => "logout"
+  get "signup" => "users#new", :as => "signup"
+
   resources :forums
 
 #  resources :tasks

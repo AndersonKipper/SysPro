@@ -4,20 +4,29 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+  #  @user = User.find_by_id(session[:user_id])
+  #  @projects = @user.projects
+  #  @projects = Project.find_by_user_id(session[:user_id])
+    @projects = Project.where(:user_id => session[:user_id])
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @task = Task.new
+    
+    
     @forum = Forum.new
     @forum.project_id = @project.id
+    @user = User.find_by_id(session[:user_id])
+    @forum.user_id = @user.id
+    @forum.name_user = @user.nome
   end
 
   # GET /projects/new
   def new
     @project = Project.new
+    @user = User.find_by_id(session[:user_id])
+    @project.user_id = @user.id
 
   end
 
@@ -32,6 +41,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+       # @project.user_id = session[:current_user_id]
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else

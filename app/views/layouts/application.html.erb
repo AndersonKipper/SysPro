@@ -2,15 +2,28 @@
 <html>
 <head>
   <title>Syspro</title>
+  <%= stylesheet_link_tag    "bootswatch.min", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.11.1.min" %>
+  <%= javascript_include_tag "bootstrap.min" %>
  <!--< %= javascript_include_tag "application" %> -->
 
 </head>
 <body>
-<% if session[:user_id] %>
-  <%= link_to 'Logout', logout_path %>
-<% end %>
-<%= yield %>
+	<div class="navbar navbar-default navbar-fixed-top">    
+  <div class="container">
+      <%= render 'layouts/navigation' %>
+  </div>
+  </div>
 
+
+
+<div class="container" style="margin-top:60px">
+ <%= yield %>
+</div>
+  <div class="container" style="padding-top:60px">
+    <hr>
+    <p class="text-muted credit">© SysPro 2015</p>
+  </div>
 
 </body>
 </html>

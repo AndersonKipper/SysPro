@@ -1,13 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
-  email: MyString
-  password: MyString
-  date: 2015-06-02
-
-two:
-  nome: MyString
-  email: MyString
-  password: MyString
+  nome: admin
+  email: admin@syspro.com
+  password: syspr0
   date: 2015-06-02

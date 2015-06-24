@@ -1,0 +1,19 @@
+<div class="navbar-header">
+ <%= link_to "Syspro", root_path, :class=> 'navbar-brand' %>
+</div>
+<ul class="nav navbar-nav">
+  <li>
+    <%= link_to "Projetos", projects_path %>
+  </li>
+  <li>
+    <%= link_to "Usuários", users_path %>
+  </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+  <li>
+  	<% if session[:user_id] %>
+  <%= link_to 'Logout', logout_path %>
+ 	<% end %>
+  </li>
+</ul>
+</div> 

@@ -20,9 +20,9 @@
         <td><%= forum.name_user %></td>
         <td><%= forum.message %></td>
         <td><%= forum.data %></td>
-        <td><%= link_to 'Show', forum %></td>
-        <td><%= link_to 'Edit', edit_forum_path(forum) %></td>
-        <td><%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', forum, class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_forum_path(forum), class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>

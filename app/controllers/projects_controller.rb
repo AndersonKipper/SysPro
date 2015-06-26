@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /projects
   # GET /projects.json
   def index
@@ -8,12 +8,18 @@ class ProjectsController < ApplicationController
   #  @projects = @user.projects
   #  @projects = Project.find_by_user_id(session[:user_id])
     @projects = Project.where(:user_id => session[:user_id])
+
+    @user = User.find_by_id(session[:user_id])
+    @tasks = Task.where(:user_email => @user.email)
+    @projectsPart = Project.all
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
-    
+    @admin = User.new
+  @admin.nome = "admin"
+  @admin.email = "admin@syspro.com"
     
     @forum = Forum.new
     @forum.project_id = @project.id
@@ -24,6 +30,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
+
     @project = Project.new
     @user = User.find_by_id(session[:user_id])
     @project.user_id = @user.id

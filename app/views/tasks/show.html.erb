@@ -30,5 +30,10 @@
   <%= @task.project_id %>
 </p>
 
+<p>
+  <strong>User:</strong>
+  <%= @task.user_email %>
+</p>
+
 <%= link_to 'Edit', edit_project_task_path(@task.project_id, @task), class: "btn btn-default btn-sm" %> |
 <%= link_to 'Back', project_path(@task.project_id), class: "btn btn-default btn-sm" %>

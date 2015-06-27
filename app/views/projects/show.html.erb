@@ -49,13 +49,14 @@
         <td><%= task.stats %></td>
         <td><%= task.project_id %></td>
 
+        <% if task.user_email == @user.email || @user.id == @project.user_id %>
 
-        <td><%= link_to 'Show', project_task_path(task.project_id, task) %></td>
+        <td><%= link_to 'Show', project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
 
-        <% if task.user_email == @user.email || @user.id == @project.user_id %>  <!-- testa usuario - arrumar aqui -->
-
-        <td><%= link_to 'Edit', edit_project_task_path(task.project_id, task) %></td>
-        <td><%= link_to 'Destroy', project_task_path(task.project_id, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @user.id == @project.user_id %>
+        <td><%= link_to 'Destroy', project_task_path(task.project_id, task), class: "btn btn-default btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <% end %>
         <% end %>
       </tr>
     <% end %>
@@ -122,17 +123,17 @@
   </tr>
   <tr>
 
-   <td> <%= f.number_field :project_id %> </td>
-   <td> <%= f.number_field :user_id %> </td>
-   <td> <%= f.text_field :name_user %></td>
+   <td> <%= f.number_field :project_id,:readonly => true %> </td>
+   <td> <%= f.number_field :user_id,:readonly => true %> </td>
+   <td> <%= f.text_field :name_user,:readonly => true %></td>
    <td> <%= f.text_area :message %> </td>   
-   <td> <%= f.date_select :data %></td>
+   <td> <%= f.date_select :data,:readonly => true %></td>
   </tr>
   </tbody>
 </table>
   <div class="actions">
 
-    <%= f.submit %>
+    <%= submit_tag "Enviar", :class => "btn btn-default btn-sm", :type => "submit" %>
   </div>
 <% end %>
 

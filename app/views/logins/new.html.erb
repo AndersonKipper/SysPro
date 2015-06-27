@@ -1,15 +1,19 @@
 <h1>Login</h1>
+  <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <%= image_tag("Penguins.jpg", :id => "profile-img", :class => "profile-img-card", :src => "images/Penguins.jpg") %>
+            <!--<img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" /> -->
+            <p id="profile-name" class="profile-name-card"></p>
+    <%= form_tag logins_create_path, :class => "form-signin" do %>
 
-<%= form_tag logins_create_path do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Login" %></div>
-
+    <span id="reauth-email" class="reauth-email"></span>
+    <%= text_field_tag :email, params[:email], :type => "email", :id => "inputEmail", :class => "form-control", :placeholder => "Email address" %>
+  
+    <%= password_field_tag :password, nil,  :id => "inputPassword",  :class => "form-control", :placeholder => "Password"  %>
+  
+  <div class="actions"><%= submit_tag "Login", :class => "btn btn-lg btn-primary btn-block btn-signin", :type => "submit" %></div>
+    <% end %>
   <p id="notice"><%= notice %></p>
-<% end %>
+      </div>
+</div>

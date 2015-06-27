@@ -1,30 +1,43 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
   # GET /users
   # GET /users.json
   def index
+    if session[:user_id] == 1
+
     @users = User.all
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @user }
     end
+     else redirect_to root_url
+     
+    
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-     @user = User.find(params[:id])
 
-    respond_to do |format|
+     @user = User.find(params[:id])
+    if session[:user_id] == 1 || @user.id == session[:user_id]
+      respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @user }
      end
+     else redirect_to root_url
+     
+    
+    end
    end
 
   # GET /users/new
   def new
+
     @user = User.new
     respond_to do |format|
       format.html # show.html.erb
@@ -34,6 +47,12 @@ end
 
   # GET /users/1/edit
   def edit
+
+    if session[:user_id] == 1 || @user.id == session[:user_id]
+      else redirect_to root_url
+     
+    
+    end
   end
 
   # POST /users

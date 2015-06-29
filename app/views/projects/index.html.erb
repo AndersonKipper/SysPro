@@ -1,13 +1,12 @@
-<h1>Listing projects</h1>
+<h1>Meus Projetos</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Userid</th>
-      <th>Stats</th>
+      <th>Descrição</th>
+      <th>Data</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,30 +17,29 @@
         <td><%= project.nome %></td>
         <td><%= project.description %></td>
         <td><%= project.date %></td>
-        <td><%= project.user_id %></td>
         <td><%= project.stats %></td>
-        <td><%= link_to 'Show', project, class: "btn btn-default btn-sm" %></td>
-        <td><%= link_to 'Edit', edit_project_path(project), class: "btn btn-default btn-sm" %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Exibir', project, class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Editar', edit_project_path(project), class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Excluir', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<%= link_to 'Novo Projeto', new_project_path, class: "btn btn-primary btn-sm" %>
 
-<%= link_to 'New Project', new_project_path, class: "btn btn-default btn-sm" %>
-<p><h2>Projetos envolvido</h2>
+<hr>
 
-<table>
+<h2>Tarefas Em Projetos Envolvidos</h2>
+
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Description</th>
-      <th>Datestart</th>
-      <th>Dateend</th>
-      <th>Stats</th>
-      <th>Projectid</th>
+      <th>Tarefa</th>
+      <th>Projeto</th>
+      <th>Data de Inicio</th>
+      <th>Data de Finalização</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -50,13 +48,14 @@
     <% @tasks.each do |task| %>
     <% @projectsPart.each do |proj| %>
     <% if task.project_id == proj.id %>
+
       <tr>
-         <td><%= proj.nome %></td>
-        <td><%= proj.description %></td>
-        <td><%= proj.date %></td>
-        <td><%= proj.user_id %></td>
-        <td><%= proj.stats %></td>        
-        <td><%= link_to 'Show', proj, class: "btn btn-default btn-sm" %></td>
+        <td><%= task.nome %></td>
+        <td><%= proj.nome %></td>
+        <td><%= task.dateStart %></td>
+        <td><%= task.dateEnd %></td>
+        <td><%= task.stats %></td>        
+        <td><%= link_to 'Visualizar', proj, class: "btn btn-default btn-sm" %></td>
       </tr>
       <% end %>
       <% end %>

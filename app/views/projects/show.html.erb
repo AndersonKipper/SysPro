@@ -1,40 +1,38 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="bg-success"><%= notice %></p>
 
+<h1>Projeto</h1>
 <p>
   <strong>Nome:</strong>
   <%= @project.nome %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Descrição:</strong>
   <%= @project.description %>
 </p>
 
 <p>
-  <strong>Date:</strong>
+  <strong>Data:</strong>
   <%= @project.date %>
 </p>
 
 <p>
-  <strong>Userid:</strong>
-  <%= @project.user_id %>
-</p>
-
-<p>
-  <strong>Stats:</strong>
+  <strong>Status:</strong>
   <%= @project.stats %>
 </p>
 <hr>
 <p>
-  <table>
+
+ <h1>Tarefas</h1> 
+  <table class="table table-striped">
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Description</th>
-      <th>Datestart</th>
-      <th>Dateend</th>
-      <th>Stats</th>
-      <th>Projectid</th>
+      <th>Descrição</th>
+      <th>Data de Inicio</th>
+      <th>Data de Finalização</th>
+      <th>Status</th>
+      <th>Id do projeto</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -51,11 +49,11 @@
 
         <% if task.user_email == @user.email || @user.id == @project.user_id %>
 
-        <td><%= link_to 'Show', project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
-        <td><%= link_to 'Edit', edit_project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Visualizar', project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Editar', edit_project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
 
         <% if @user.id == @project.user_id %>
-        <td><%= link_to 'Destroy', project_task_path(task.project_id, task), class: "btn btn-default btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Excluir', project_task_path(task.project_id, task), class: "btn btn-default btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
          <% end %>
         <% end %>
       </tr>
@@ -68,34 +66,19 @@
 
 <% if @project.user_id == @user.id %>  <!-- testa usuario - arrumar aqui -->
 
-<%= link_to 'New Task', new_project_task_path(@project), class: "btn btn-default btn-sm" %>
-<%= link_to 'Edit', edit_project_path(@project), class: "btn btn-default btn-sm" %>
-<%= link_to 'Back', projects_path, class: "btn btn-default btn-sm" %>
+<%= link_to 'Nova Tarefa', new_project_task_path(@project), class: "btn btn-primary btn-sm" %>
 <% end %>
 <div >
 <p>
   <hr>
-  <h2>Forum</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Mensagem</th>
-      <th>Data</th>
-    </tr>
-  </thead>
-<tbody>
+  <h1>Forum</h1>
     <% @project.forums.each do |msg| %>
-      <tr>
-        <td><%= msg.name_user %></td>
-        <td><%= msg.message %></td>
-        <td><%= msg.data %></td>
-        
-      </tr>
+      <p>
+        <strong><%= msg.name_user %> </strong> (<%= msg.data %>): <br><%= msg.message %>
+      </p>
+      </br>
     <% end %>
-    
-  </tbody>
-</table>
+
 <p>
   <%= form_for(@forum) do |f| %>
   <% if @forum.errors.any? %>
@@ -110,35 +93,37 @@
     </div>
   <% end %>
   
-  
-  <table>
-    <tbody>
-    <tr>
-    <td><%= f.label 'Projeto' %></td>
-   <td><%= f.label 'Usuario Id' %></td>
-   <td> <%= f.label 'Usuario' %></td>
-   <td> <%= f.label 'Mensagem' %></td>
-   <td> <%= f.label 'Data' %></td>
-
-  </tr>
-  <tr>
-
-   <td> <%= f.number_field :project_id,:readonly => true %> </td>
-   <td> <%= f.number_field :user_id,:readonly => true %> </td>
-   <td> <%= f.text_field :name_user,:readonly => true %></td>
-   <td> <%= f.text_area :message %> </td>   
-   <td> <%= f.date_select :data,:readonly => true %></td>
-  </tr>
-  </tbody>
-</table>
-  <div class="actions">
-
-    <%= submit_tag "Enviar", :class => "btn btn-default btn-sm", :type => "submit" %>
+<h1>Escrever Mensagem</h1> 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 contact-form">
+      <form id="contact" method="post" class="form" role="form">
+        <div class="row">
+          <div class="col-xs-6 col-md-6 form-group">
+            <td><%= f.label 'Nome:' %></td>
+            <%= f.text_field :name_user,:readonly => true, :class => "form-control" %>
+          </div>
+          <div class="col-xs-3 col-md-3 form-group">
+            <td><%= f.label 'Id do Projeto:' %></td>
+            <%= f.number_field :project_id,:readonly => true, :class => "form-control" %>
+          </div>
+          <div class="col-xs-3 col-md-3 form-group">
+            <td><%= f.label 'Id de Usuário:' %></td>
+            <%= f.number_field :user_id,:readonly => true, :class => "form-control" %>
+          </div>
+      </div>
+      <%= f.text_area :message, :class => "form-control", :placeholder => "Message", :rows => "5" %>
+      <br/>
+      <%= f.date_select :data, :readonly => true, :class => "form-control" %>
+      <div class="row">
+       <div class="col-xs-12 col-md-12 form-group">
+        <div class="actions">
+          <%= submit_tag "Enviar", :class => "btn btn-primary pull-right", :type => "submit" %>
+        </div>
+     </form>
   </div>
+</div>
+
 <% end %>
-
-
-
-
 
 </div>

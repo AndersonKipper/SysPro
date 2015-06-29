@@ -13,25 +13,27 @@
 
   <div class="field">
     <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+    <%= f.text_field :nome, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.date_select :date, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.number_field :user_id, :readonly => true %>
+    <%= f.number_field :user_id, :readonly => true, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :stats %><br>
-    <%= f.text_field :stats %>
+    <%= f.text_field :stats, :class => "form-control" %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br>
 <% end %>

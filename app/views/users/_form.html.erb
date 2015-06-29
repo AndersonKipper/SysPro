@@ -14,22 +14,24 @@
 
   <div class="field">
     <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+    <%= f.text_field :nome, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.text_field :password %>
+    <%= f.text_field :password, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.date_select :date, :class => "form-control" %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br>
 <% end %>
 

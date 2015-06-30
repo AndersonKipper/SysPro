@@ -30,7 +30,7 @@
 
 <hr>
 
-<h2>Tarefas Em Projetos Envolvidos</h2>
+<h2>Minhas Tarefas</h2>
 
 <table class="table table-striped">
   <thead>
@@ -45,8 +45,9 @@
   </thead>
 
   <tbody>
-    <% @tasks.each do |task| %>
     <% @projectsPart.each do |proj| %>
+    <% @tasks.each do |task| %>
+    
     <% if task.project_id == proj.id %>
 
       <tr>

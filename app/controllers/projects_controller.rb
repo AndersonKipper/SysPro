@@ -7,20 +7,19 @@ class ProjectsController < ApplicationController
   #  @user = User.find_by_id(session[:user_id])
   #  @projects = @user.projects
   #  @projects = Project.find_by_user_id(session[:user_id])
+
     @projects = Project.where(:user_id => session[:user_id])
+
 
     @user = User.find_by_id(session[:user_id])
     @tasks = Task.where(:user_email => @user.email)
+    @tasks.order(dateEnd: :asc)
     @projectsPart = Project.all
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @admin = User.new
-  @admin.nome = "admin"
-  @admin.email = "admin@syspro.com"
-    
     @forum = Forum.new
     @forum.project_id = @project.id
     @user = User.find_by_id(session[:user_id])
@@ -39,6 +38,11 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @user = User.find_by_id(session[:user_id])
+    @project = Project.find_by_id(params[:id])
+    if @user.id != 1 && @user.id != @project.user_id
+      redirect_to "404.html"
+    end
   end
 
   # POST /projects

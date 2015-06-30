@@ -8,9 +8,9 @@
     <%= form_tag logins_create_path, :class => "form-signin" do %>
 
     <span id="reauth-email" class="reauth-email"></span>
-    <%= text_field_tag :email, params[:email], :type => "email", :id => "inputEmail", :class => "form-control", :placeholder => "Email address" %>
+    <%= text_field_tag :email, params[:email], :type => "email", :id => "inputEmail", :class => "form-control", :placeholder => "Email" %>
   
-    <%= password_field_tag :password, nil,  :id => "inputPassword",  :class => "form-control", :placeholder => "Password"  %>
+    <%= password_field_tag :password, nil,  :id => "inputPassword",  :class => "form-control", :placeholder => "Senha"  %>
   
   <div class="actions"><%= submit_tag "Login", :class => "btn btn-lg btn-primary btn-block btn-signin", :type => "submit" %></div>
     <% end %>

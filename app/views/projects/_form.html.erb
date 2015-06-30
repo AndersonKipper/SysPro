@@ -16,11 +16,11 @@
     <%= f.text_field :nome, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label "Descrição" %><br>
     <%= f.text_area :description, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
+    <%= f.label "Data" %><br>
     <%= f.date_select :date, :class => "form-control" %>
   </div>
   <div class="field">
@@ -28,12 +28,12 @@
     <%= f.number_field :user_id, :readonly => true, :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :stats %><br>
+    <%= f.label "Status" %><br>
     <%= f.text_field :stats, :class => "form-control" %>
   </div>
   <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Salvar",class: "btn btn-primary btn-sm" %>
   </div>
   <br>
 <% end %>

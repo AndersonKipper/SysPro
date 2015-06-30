@@ -22,9 +22,9 @@
         <td><%= task.dateEnd %></td>
         <td><%= task.stats %></td>
         <td><%= task.project_id %></td>
-        <td><%= link_to 'Show', task, class: "btn btn-default btn-sm" %></td>
-        <td><%= link_to 'Edit', edit_task_path(task), class: "btn btn-default btn-sm" %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Show', project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Destroy', project_task_path(task.project_id, task), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_project_task_path(@project), class: "btn btn-default btn-sm" %>
+<%= link_to 'New Task', new_project_path, class: "btn btn-default btn-sm" %>

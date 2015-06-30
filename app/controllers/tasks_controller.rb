@@ -4,12 +4,15 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
+    if session[:user_id] != 1
+      redirect_to "404.html"
+    end
     @tasks = Task.all
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
-  def show
+  def show    
   end
 
   # GET /tasks/new
@@ -22,6 +25,11 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @task = Task.find_by_id(params[:id])
+    @user = User.find_by_id(session[:user_id])
+    if @user.email != @task.user_email && @user.id != 1
+      redirect_to "404.html"
+    end
   end
 
   # POST /tasks

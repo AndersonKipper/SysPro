@@ -1,5 +1,10 @@
 class ForumsController < ApplicationController
   before_action :set_forum, only: [:show, :edit, :update, :destroy]
+  before_action :redirect, only: [:show, :edit, :update, :destroy, :index]
+
+def redirect
+  redirect_to "404.html"
+end
 
   # GET /forums
   # GET /forums.json

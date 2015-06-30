@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       format.html # show.html.erb
       format.json { render :json => @user }
     end
-     else redirect_to root_url
+     else redirect_to "404.html"
      
     
     end
@@ -24,12 +24,10 @@ class UsersController < ApplicationController
   def show
 
      @user = User.find(params[:id])
-    if session[:user_id] == 1 || @user.id == session[:user_id]
       respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @user }
-     end
-     else redirect_to root_url
+
      
     
     end
@@ -37,21 +35,24 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-
+    if session[:user_id] == 1 
+      
     @user = User.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @user }
+
+      end
+  else  redirect_to "404.html"
   end
 end
 
   # GET /users/1/edit
   def edit
-
-    if session[:user_id] == 1 || @user.id == session[:user_id]
-      else redirect_to root_url
-     
-    
+    @user1 = User.find_by_id(session[:user_id])
+    @user2 =  User.find_by_id(params[:id])
+    if @user1.id != 1 && @user2.id != @user1.id
+     redirect_to "404.html"
     end
   end
 

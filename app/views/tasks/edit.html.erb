@@ -2,5 +2,5 @@
 
 <%= render 'form_edit' %>
 
-<%= link_to 'Vizualizar', project_tasks_path(@task), class: "btn btn-default btn-sm" %> |
+<%= link_to 'Vizualizar', project_task_path(@task.project_id, @task), class: "btn btn-default btn-sm" %> |
 <%= link_to 'Voltar', projects_path(@project), class: "btn btn-default btn-sm" %>

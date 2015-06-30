@@ -7,11 +7,6 @@
 </p>
 
 <p>
-  <strong>Descrição:</strong>
-  <%= @project.description %>
-</p>
-
-<p>
   <strong>Data:</strong>
   <%= @project.date %>
 </p>
@@ -20,6 +15,13 @@
   <strong>Status:</strong>
   <%= @project.stats %>
 </p>
+
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @project.description %>
+</p>
+
 <hr>
 <p>
 
@@ -28,11 +30,9 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Descrição</th>
       <th>Data de Inicio</th>
       <th>Data de Finalização</th>
       <th>Status</th>
-      <th>Id do projeto</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -41,20 +41,24 @@
     <% @project.tasks.each do |task| %>
       <tr>
         <td><%= task.nome %></td>
-        <td><%= task.description %></td>
         <td><%= task.dateStart %></td>
         <td><%= task.dateEnd %></td>
         <td><%= task.stats %></td>
-        <td><%= task.project_id %></td>
 
-        <% if task.user_email == @user.email || @user.id == @project.user_id %>
+        
 
         <td><%= link_to 'Visualizar', project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
-        <td><%= link_to 'Editar', edit_project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %></td>
 
-        <% if @user.id == @project.user_id %>
+        
+        <td>
+          <% if task.user_email == @user.email || @user.id == @project.user_id %>
+          <%= link_to 'Editar', edit_project_task_path(task.project_id, task), class: "btn btn-default btn-sm" %>
+          <%end %>
+        </td>
+
+        <% if @user.id == @project.user_id || @user_id == 1%>
         <td><%= link_to 'Excluir', project_task_path(task.project_id, task), class: "btn btn-default btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-         <% end %>
+         
         <% end %>
       </tr>
     <% end %>
@@ -69,15 +73,7 @@
 <%= link_to 'Nova Tarefa', new_project_task_path(@project), class: "btn btn-primary btn-sm" %>
 <% end %>
 <div >
-<p>
-  <hr>
-  <h1>Forum</h1>
-    <% @project.forums.each do |msg| %>
-      <p>
-        <strong><%= msg.name_user %> </strong> (<%= msg.data %>): <br><%= msg.message %>
-      </p>
-      </br>
-    <% end %>
+<hr>
 
 <p>
   <%= form_for(@forum) do |f| %>
@@ -93,7 +89,7 @@
     </div>
   <% end %>
   
-<h1>Escrever Mensagem</h1> 
+<h2>Escrever Mensagem</h2> 
 <div class="container">
   <div class="row">
     <div class="col-sm-8 contact-form">
@@ -125,5 +121,14 @@
 </div>
 
 <% end %>
+<hr>
+  <h2>Mensagens</h2>
+  <br />
+    <% @project.forums.each do |msg| %>
+      <p>
+        <strong><%= msg.name_user + " (" + @user.email + ")" %> </strong> (<%= msg.data %>): <br><%= msg.message %>
+      </p>
+      </br>
+    <% end %>
 
 </div>

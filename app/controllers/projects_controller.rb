@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @user = User.find_by_id(session[:user_id])
     @project.user_id = @user.id
-
+@u = User.all
   end
 
   # GET /projects/1/edit
@@ -43,6 +43,7 @@ class ProjectsController < ApplicationController
     if @user.id != 1 && @user.id != @project.user_id
       redirect_to "404.html"
     end
+    @u = User.all
   end
 
   # POST /projects

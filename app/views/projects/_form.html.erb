@@ -23,15 +23,15 @@
     <%= f.label "Data" %><br>
     <%= f.date_select :date, :class => "form-control" %>
   </div>
-  <!--<div class="field">
-    < %= f.label :user_id %><br>
-    < %= f.number_field :user_id, :readonly => true, :class => "form-control" %>
-  </div>-->
   <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id, :readonly => true, :class => "form-control" %>
+  </div>
+  <!-- <div class="field">
     <%= f.label :user_id %>
     <%= f.select :user_id, options_for_select(@u.map{|u| [u.email, u.id]}, :selected => @project.user_id), 
     {}, {:class => "form-control"} %>
-  </div>
+  </div>-->
   <div class="field">
     <%= f.label "Status" %><br>
     <%= f.text_field :stats, :class => "form-control" %>

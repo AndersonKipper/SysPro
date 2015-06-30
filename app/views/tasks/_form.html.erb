@@ -35,10 +35,15 @@
     <%= f.label :project_id %><br>
     <%= f.number_field :project_id, :readonly => true, :class => "form-control" %>
   </div>
-   <div class="field">
-    <%= f.label :user_email %><br>
-    <%= f.text_field :user_email, :class => "form-control" %>
+  <div class="field">
+    <%= f.label :user_email %>
+    <%= f.select :user_email, options_for_select(@combo.map{|u| [u.email, u.email]}, :selected => @task.user_email), 
+    {}, {:class => "form-control"} %>
   </div>
+   <!-- <div class="field">
+    < %= f.label :user_email %><br>
+    < %= f.text_field :user_email, :class => "form-control" %>
+  </div>-->
   <br>
   <div class="actions">
     <%= f.submit "Criar Tarefa", class: "btn btn-primary btn-sm" %>

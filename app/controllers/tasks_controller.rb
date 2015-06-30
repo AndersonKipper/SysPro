@@ -20,7 +20,7 @@ class TasksController < ApplicationController
     @task = Task.new
     @task.project_id = params[:project_id]
 
-    
+    @combo = User.all
   end
 
   # GET /tasks/1/edit
@@ -30,6 +30,7 @@ class TasksController < ApplicationController
     if @user.email != @task.user_email && @user.id != 1
       redirect_to "404.html"
     end
+    @combo = User.all
   end
 
   # POST /tasks
